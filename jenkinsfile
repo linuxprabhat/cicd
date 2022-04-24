@@ -12,8 +12,7 @@ stage ('push repo to remote host') {
 steps {
 echo "connect to remote host and pull down the latest version"
 sh ' ssh -i "/var/jenkins_home/workspace/j.pem"
-ec2-user@13.234.77.73 git
--C "/var/www/html/" pull'
+ec2-user@13.234.77.73 '
 }
 }
 stage ('check website is up') {
