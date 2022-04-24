@@ -1,0 +1,26 @@
+pipeline {
+agent any
+stages {
+stage ('clone the repo') {
+steps {
+echo "clone the repo"
+sh 'rm -rf cicd'
+sh 'git clone https://github.com/linuxprabhat/cicd.git1~'
+}
+}
+stage ('push repo to remote host') {
+steps {
+echo "connect to remote host and pull down the latest version"
+sh ' ssh -i "/var/jenkins_home/workspace/j.pem"
+ec2-user@13.234.77.73 git
+-C "/var/www/html/" pull'
+}
+}
+stage ('check website is up') {
+steps {
+echo "check website is up"
+sh 'curl -is | head -n 1'
+}
+}
+}
+}
